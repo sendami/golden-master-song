@@ -1,7 +1,11 @@
 package org.tw;
 
-public class Main {
+public class Song {
     public static void main(String[] args) {
+        printSong();
+    }
+
+    public static void printSong() {
         String song = "There was an old lady who swallowed a fly.\n" +
                 "I don't know why she swallowed a fly - perhaps she'll die!\n" +
                 "\n" +

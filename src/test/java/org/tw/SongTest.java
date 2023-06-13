@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -31,8 +32,10 @@ public class SongTest {
 
     @Test
     public void shouldAddDynamicallyThereWasAnOldLadyThatSwallowedAnAnimalSentence() throws IOException {
-        String animal = "fly";
-        String thereWas = String.format("There was an old lady who swallowed a %s.\n", animal);
+        String[] listOfAnimals = {"fly", "spider", "bird", "cat", "dog", "cow", "horse"};
+        String[] thereWas = Arrays.stream(listOfAnimals).map(animal ->
+                String.format("There was an old lady who swallowed a %s", animal))
+                        .toArray(String[]::new);
 
         Song.printSong(thereWas);
 

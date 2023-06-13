@@ -50,9 +50,9 @@ public class Song {
         System.out.println(song);
     }
 
-    public static void printSong(String thereWas) {
-        String song = thereWas +
-                "I don't know why she swallowed a fly - perhaps she'll die!\n" +
+    public static void printSong(String[] thereWas) {
+        String song = thereWas[0] + ".\n" +
+        "I don't know why she swallowed a fly - perhaps she'll die!\n" +
                 "\n" +
                 "There was an old lady who swallowed a spider;\n" +
                 "That wriggled and wiggled and tickled inside her.\n" +

@@ -14,23 +14,22 @@ public class SongTest {
 
     @Test
     public void shouldBeTheSameThanGoldenMaster() throws IOException {
-        ByteArrayOutputStream inMemoryStream = new ByteArrayOutputStream();
-        PrintStream gamesResults= new PrintStream(inMemoryStream);
-        System.setOut(gamesResults);
+        ByteArrayOutputStream inMemoryStream = setupOutput();
 
         Song.printSong();
 
-        File file = new File(GOLDEN_MASTER_PATH);
-        assertEquals(readStream(new ByteArrayInputStream(inMemoryStream.toByteArray())), readContent(file));
+        assertEquals(expectedSong(inMemoryStream), readContent(new File(GOLDEN_MASTER_PATH)));
     }
 
-    public static void main(String [] args) throws FileNotFoundException {
-        PrintStream goldenMasterFile = new PrintStream(new FileOutputStream(GOLDEN_MASTER_PATH));
-        System.setOut(goldenMasterFile);
+    private static List<String> expectedSong(ByteArrayOutputStream inMemoryStream) throws IOException {
+        return readStream(new ByteArrayInputStream(inMemoryStream.toByteArray()));
+    }
 
-        Song.printSong();
-
-        goldenMasterFile.close();
+    private static ByteArrayOutputStream setupOutput() {
+        ByteArrayOutputStream inMemoryStream = new ByteArrayOutputStream();
+        PrintStream printedSong = new PrintStream(inMemoryStream);
+        System.setOut(printedSong);
+        return inMemoryStream;
     }
 
     private static List<String> readContent(File file) throws IOException {
@@ -40,11 +39,20 @@ public class SongTest {
 
     private static List<String> readStream(InputStream byteArrayInputStream) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(byteArrayInputStream));
-        List<String> result= new ArrayList<>();
-        while(reader.ready()) {
+        List<String> result = new ArrayList<>();
+        while (reader.ready()) {
             result.add(reader.readLine());
         }
         return result;
+    }
+
+    public static void main(String[] args) throws FileNotFoundException {
+        PrintStream goldenMasterFile = new PrintStream(new FileOutputStream(GOLDEN_MASTER_PATH));
+        System.setOut(goldenMasterFile);
+
+        Song.printSong();
+
+        goldenMasterFile.close();
     }
 
 }

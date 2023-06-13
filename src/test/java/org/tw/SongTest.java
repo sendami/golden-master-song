@@ -39,6 +39,30 @@ public class SongTest {
     }
 
     @Test
+    public void shouldBuildThereWasDynamicallyInTheFirstVerse() {
+        String thereWasSentence = Song.buildThereWas(1, LIST_OF_ANIMALS);
+
+        assertEquals("There was an old lady who swallowed a fly.",
+                thereWasSentence);
+    }
+
+    @Test
+    public void shouldBuildThereWasDynamicallyInTheSecondVerse() {
+        String thereWasSentence = Song.buildThereWas(2, LIST_OF_ANIMALS);
+
+        assertEquals("There was an old lady who swallowed a spider;",
+                thereWasSentence);
+    }
+
+    @Test
+    public void shouldBuildThereWasDynamicallyInTheSeventhVerse() {
+        String thereWasSentence = Song.buildThereWas(7, LIST_OF_ANIMALS);
+
+        assertEquals("There was an old lady who swallowed a horse...",
+                thereWasSentence);
+    }
+
+    @Test
     public void shouldBuildSheSwallowedDynamicallyInTheFirstVerse() {
         String sheShallowSentence = Song.buildSheShallow(1, LIST_OF_ANIMALS);
 

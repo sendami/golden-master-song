@@ -113,6 +113,14 @@ public class Song {
                         String.format("There was an old lady who swallowed a %s", animal))
                 .toArray(String[]::new);
     }
+    public static String buildThereWas(int order, String[] listOfAnimals) {
+        String sentence = String.format("There was an old lady who swallowed a %s", listOfAnimals[order - 1]);
+        return order > 1 ?
+                (order == listOfAnimals.length ?
+                    sentence + "..." :
+                    sentence + ";" ) :
+                sentence + ".";
+    }
 
     public static String buildSheShallow(int order, String[] listOfAnimals) {
         StringBuilder sheShallow = new StringBuilder();
@@ -129,4 +137,5 @@ public class Song {
 
         return sheShallow.toString();
     }
+
 }

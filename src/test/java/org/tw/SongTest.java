@@ -93,6 +93,38 @@ public class SongTest {
                 sheShallowSentence);
     }
 
+    @Test
+    public void shouldBuildVerseAfterThereWasInTheFirstStrophe() {
+        String uniqueSentence = Song.buildVerseAfterThereWas(1, LIST_OF_ANIMALS);
+
+        assertEquals("",
+                uniqueSentence);
+    }
+
+    @Test
+    public void shouldBuildVerseAfterThereWasInTheSecondStrophe() {
+        String uniqueSentence = Song.buildVerseAfterThereWas(2, LIST_OF_ANIMALS);
+
+        assertEquals("That wriggled and wiggled and tickled inside her.",
+                uniqueSentence);
+    }
+
+    @Test
+    public void shouldBuildVerseAfterThereWasInTheThirdStrophe() {
+        String uniqueSentence = Song.buildVerseAfterThereWas(3, LIST_OF_ANIMALS);
+
+        assertEquals("How absurd to swallow a bird.",
+                uniqueSentence);
+    }
+
+    @Test
+    public void shouldBuildVerseAfterThereWasInTheForthStrophe() {
+        String uniqueSentence = Song.buildVerseAfterThereWas(4, LIST_OF_ANIMALS);
+
+        assertEquals("Fancy that to swallow a cat!",
+                uniqueSentence);
+    }
+
     private static List<String> expectedSong(ByteArrayOutputStream inMemoryStream) throws IOException {
         return readStream(new ByteArrayInputStream(inMemoryStream.toByteArray()));
     }

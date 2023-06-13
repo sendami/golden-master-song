@@ -113,18 +113,19 @@ public class Song {
                         String.format("There was an old lady who swallowed a %s", animal))
                 .toArray(String[]::new);
     }
+
     public static String buildThereWas(int order, String[] listOfAnimals) {
         String sentence = String.format("There was an old lady who swallowed a %s", listOfAnimals[order - 1]);
         return order > 1 ?
                 (order == listOfAnimals.length ?
-                    sentence + "..." :
-                    sentence + ";" ) :
+                        sentence + "..." :
+                        sentence + ";") :
                 sentence + ".";
     }
 
     public static String buildSheShallow(int order, String[] listOfAnimals) {
         StringBuilder sheShallow = new StringBuilder();
-        for(int i = order; i > 0; i--) {
+        for (int i = order; i > 0; i--) {
             sheShallow.append(String.format("She swallowed the %s to catch the %s",
                     listOfAnimals[i],
                     listOfAnimals[i - 1]));
@@ -138,4 +139,12 @@ public class Song {
         return sheShallow.toString();
     }
 
+    public static String buildVerseAfterThereWas(int verseNumber, String[] listOfAnimals) {
+        return switch (verseNumber) {
+            default -> "";
+            case 2 -> "That wriggled and wiggled and tickled inside her.";
+            case 3 -> String.format("How absurd to swallow a %s.", listOfAnimals[verseNumber - 1]);
+            case 4 -> String.format("Fancy that to swallow a %s!", listOfAnimals[verseNumber - 1]);
+        };
+    }
 }

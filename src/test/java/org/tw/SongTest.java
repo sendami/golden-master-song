@@ -1,5 +1,6 @@
 package org.tw;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
@@ -12,24 +13,34 @@ public class SongTest {
 
     public static final String GOLDEN_MASTER_PATH = "./goldenMaster.txt";
 
+    private ByteArrayOutputStream inMemoryStream;
+
+    @BeforeEach
+    public void setupOutput() {
+        inMemoryStream = new ByteArrayOutputStream();
+        PrintStream printedSong = new PrintStream(inMemoryStream);
+        System.setOut(printedSong);
+    }
+
     @Test
     public void shouldBeTheSameThanGoldenMaster() throws IOException {
-        ByteArrayOutputStream inMemoryStream = setupOutput();
-
         Song.printSong();
+
+        assertEquals(expectedSong(inMemoryStream), readContent(new File(GOLDEN_MASTER_PATH)));
+    }
+
+    @Test
+    public void shouldAddDynamicallyThereWasAnOldLadyThatSwallowedAnAnimalSentence() throws IOException {
+        String animal = "fly";
+        String thereWas = String.format("There was an old lady who swallowed a %s.\n", animal);
+
+        Song.printSong(thereWas);
 
         assertEquals(expectedSong(inMemoryStream), readContent(new File(GOLDEN_MASTER_PATH)));
     }
 
     private static List<String> expectedSong(ByteArrayOutputStream inMemoryStream) throws IOException {
         return readStream(new ByteArrayInputStream(inMemoryStream.toByteArray()));
-    }
-
-    private static ByteArrayOutputStream setupOutput() {
-        ByteArrayOutputStream inMemoryStream = new ByteArrayOutputStream();
-        PrintStream printedSong = new PrintStream(inMemoryStream);
-        System.setOut(printedSong);
-        return inMemoryStream;
     }
 
     private static List<String> readContent(File file) throws IOException {

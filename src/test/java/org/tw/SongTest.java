@@ -1,18 +1,20 @@
 package org.tw;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.tw.Song.buildThereWasSentences;
 
 public class SongTest {
 
     public static final String GOLDEN_MASTER_PATH = "./goldenMaster.txt";
+    public static final String[] LIST_OF_ANIMALS = new String[]{"fly", "spider", "bird", "cat", "dog", "cow", "horse"};
 
     private ByteArrayOutputStream inMemoryStream;
 
@@ -32,14 +34,14 @@ public class SongTest {
 
     @Test
     public void shouldAddDynamicallyThereWasAnOldLadyThatSwallowedAnAnimalSentence() throws IOException {
-        String[] listOfAnimals = {"fly", "spider", "bird", "cat", "dog", "cow", "horse"};
-        String[] thereWas = Arrays.stream(listOfAnimals).map(animal ->
-                String.format("There was an old lady who swallowed a %s", animal))
-                        .toArray(String[]::new);
-
-        Song.printSong(thereWas);
+        Song.printSong(buildThereWasSentences(LIST_OF_ANIMALS));
 
         assertEquals(expectedSong(inMemoryStream), readContent(new File(GOLDEN_MASTER_PATH)));
+    }
+
+    @Disabled("TODO: build she swallowed sentences")
+    @Test
+    public void shouldBuildSheSwallowedDynamically() {
     }
 
     private static List<String> expectedSong(ByteArrayOutputStream inMemoryStream) throws IOException {

@@ -1,5 +1,7 @@
 package org.tw;
 
+import java.util.Arrays;
+
 public class Song {
     public static void main(String[] args) {
         printSong();
@@ -104,5 +106,11 @@ public class Song {
                 thereWas[6]);
 
         System.out.println(refactoredSong);
+    }
+
+    public static String[] buildThereWasSentences(String[] listOfAnimals) {
+        return Arrays.stream(listOfAnimals).map(animal ->
+                        String.format("There was an old lady who swallowed a %s", animal))
+                .toArray(String[]::new);
     }
 }

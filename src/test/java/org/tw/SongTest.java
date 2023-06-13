@@ -1,7 +1,6 @@
 package org.tw;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
@@ -39,9 +38,35 @@ public class SongTest {
         assertEquals(expectedSong(inMemoryStream), readContent(new File(GOLDEN_MASTER_PATH)));
     }
 
-    @Disabled("TODO: build she swallowed sentences")
     @Test
-    public void shouldBuildSheSwallowedDynamically() {
+    public void shouldBuildSheSwallowedDynamicallyInTheFirstVerse() {
+        String sheShallowSentence = Song.buildSheShallow(1, LIST_OF_ANIMALS);
+
+        assertEquals("She swallowed the spider to catch the fly;",
+                sheShallowSentence);
+    }
+
+    @Test
+    public void shouldBuildSheShallowDynamicallyInTheSecondVerse() {
+        String sheShallowSentence = Song.buildSheShallow(2, LIST_OF_ANIMALS);
+
+        assertEquals("""
+                She swallowed the bird to catch the spider,
+                She swallowed the spider to catch the fly;""",
+                sheShallowSentence);
+    }
+
+    @Test
+    public void shouldBuildSheShallowDynamicallyInTheFifthVerse() {
+        String sheShallowSentence = Song.buildSheShallow(5, LIST_OF_ANIMALS);
+
+        assertEquals("""
+                She swallowed the cow to catch the dog,
+                She swallowed the dog to catch the cat,
+                She swallowed the cat to catch the bird,
+                She swallowed the bird to catch the spider,
+                She swallowed the spider to catch the fly;""",
+                sheShallowSentence);
     }
 
     private static List<String> expectedSong(ByteArrayOutputStream inMemoryStream) throws IOException {

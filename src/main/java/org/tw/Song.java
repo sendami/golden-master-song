@@ -113,4 +113,20 @@ public class Song {
                         String.format("There was an old lady who swallowed a %s", animal))
                 .toArray(String[]::new);
     }
+
+    public static String buildSheShallow(int order, String[] listOfAnimals) {
+        StringBuilder sheShallow = new StringBuilder();
+        for(int i = order; i > 0; i--) {
+            sheShallow.append(String.format("She swallowed the %s to catch the %s",
+                    listOfAnimals[i],
+                    listOfAnimals[i - 1]));
+            if (i == 1) {
+                sheShallow.append(";");
+            } else {
+                sheShallow.append(",\n");
+            }
+        }
+
+        return sheShallow.toString();
+    }
 }

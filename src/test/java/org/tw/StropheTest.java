@@ -92,6 +92,7 @@ public class StropheTest {
         assertEquals("""                
                         There was an old lady who swallowed a fly.
                         I don't know why she swallowed a fly - perhaps she'll die!
+                        
                         """,
                 firstStrophe);
     }
@@ -105,6 +106,7 @@ public class StropheTest {
                         That wriggled and wiggled and tickled inside her.
                         She swallowed the spider to catch the fly;
                         I don't know why she swallowed a fly - perhaps she'll die!
+                        
                         """,
                 secondStrophe);
     }

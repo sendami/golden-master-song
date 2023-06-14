@@ -45,10 +45,19 @@ public class Strophe {
     }
 
     public String buildStrophe(int stropheNumber) {
-        return this.buildThereWas(stropheNumber) +
-                this.buildVerseAfterThereWas(stropheNumber)+
-                this.buildSheShallow(stropheNumber)+
-                "I don't know why she swallowed a fly - perhaps she'll die!\n" +
-                "\n";
+        String commonFirstAndLastStrophe = this.buildThereWas(stropheNumber) +
+                this.buildVerseAfterThereWas(stropheNumber);
+        if (stropheNumber == listOfAnimals.length || listOfAnimals.length == 1) {
+            return commonFirstAndLastStrophe;
+        } else {
+            return commonFirstAndLastStrophe +
+                    this.buildSheShallow(stropheNumber) +
+                    "I don't know why she swallowed a fly - perhaps she'll die!\n" +
+                    "\n";
+        }
+    }
+
+    public int getNumberOfStrophes() {
+        return this.listOfAnimals.length;
     }
 }

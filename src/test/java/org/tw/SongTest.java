@@ -31,7 +31,7 @@ public class SongTest {
     }
 
     @Test
-    public void shouldAddDynamicallyThereWasAnOldLadyThatSwallowedAnAnimalSentence() throws IOException {
+    public void shouldAddStrophesForTheGoldenMasterListOfAnimals() throws IOException {
         Strophe strophe = new Strophe(LIST_OF_ANIMALS);
         Song.printSong(strophe);
 

@@ -8,7 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StropheTest {
     public static final String[] LIST_OF_ANIMALS = new String[]{"fly", "spider", "bird", "cat", "dog", "cow", "horse"};
-    private final Strophe strophe = new Strophe(LIST_OF_ANIMALS);;
+    private final Strophe strophe = new Strophe(LIST_OF_ANIMALS);
+    ;
 
     @ParameterizedTest
     @CsvSource(textBlock = """
@@ -92,7 +93,7 @@ public class StropheTest {
         assertEquals("""                
                         There was an old lady who swallowed a fly.
                         I don't know why she swallowed a fly - perhaps she'll die!
-                        
+                                                
                         """,
                 firstStrophe);
     }
@@ -106,8 +107,20 @@ public class StropheTest {
                         That wriggled and wiggled and tickled inside her.
                         She swallowed the spider to catch the fly;
                         I don't know why she swallowed a fly - perhaps she'll die!
-                        
+                                                
                         """,
                 secondStrophe);
     }
+
+    @Test
+    public void shouldBuildSeventhStrophe() {
+        String seventhStrophe = strophe.buildStrophe(7);
+
+        assertEquals("""
+                        There was an old lady who swallowed a horse...
+                        ...She's dead, of course!""",
+                seventhStrophe);
+    }
+
+
 }

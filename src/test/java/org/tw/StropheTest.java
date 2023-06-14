@@ -3,10 +3,12 @@ package org.tw;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StropheTest {
     public static final String[] LIST_OF_ANIMALS = new String[]{"fly", "spider", "bird", "cat", "dog", "cow", "horse"};
+    private final Strophe strophe = new Strophe(LIST_OF_ANIMALS);;
 
     @ParameterizedTest
     @CsvSource(textBlock = """
@@ -16,7 +18,7 @@ public class StropheTest {
             """,
             quoteCharacter = '"')
     public void shouldBuildThereWasDynamicallyInTheFirstVerse(int verseNumber, String expectedVerse) {
-        String thereWasSentence = Strophe.buildThereWas(verseNumber, LIST_OF_ANIMALS);
+        String thereWasSentence = strophe.buildThereWas(verseNumber);
 
         assertEquals(expectedVerse,
                 thereWasSentence);
@@ -24,14 +26,14 @@ public class StropheTest {
 
     @Test
     public void shouldNotBuildSheShallowDynamicallyInTheFirsStrophe() {
-        String sheShallowSentence = Strophe.buildSheShallow(1, LIST_OF_ANIMALS);
+        String sheShallowSentence = strophe.buildSheShallow(1);
 
         assertEquals("", sheShallowSentence);
     }
 
     @Test
     public void shouldBuildSheSwallowedDynamicallyInTheSecondStrophe() {
-        String sheShallowSentence = Strophe.buildSheShallow(2, LIST_OF_ANIMALS);
+        String sheShallowSentence = strophe.buildSheShallow(2);
 
         assertEquals("She swallowed the spider to catch the fly;\n",
                 sheShallowSentence);
@@ -39,7 +41,7 @@ public class StropheTest {
 
     @Test
     public void shouldBuildSheShallowDynamicallyInTheThirdStrophe() {
-        String sheShallowSentence = Strophe.buildSheShallow(3, LIST_OF_ANIMALS);
+        String sheShallowSentence = strophe.buildSheShallow(3);
 
         assertEquals("""
                         She swallowed the bird to catch the spider,
@@ -50,7 +52,7 @@ public class StropheTest {
 
     @Test
     public void shouldBuildSheShallowDynamicallyInTheSixStrophe() {
-        String sheShallowSentence = Strophe.buildSheShallow(6, LIST_OF_ANIMALS);
+        String sheShallowSentence = strophe.buildSheShallow(6);
 
         assertEquals("""
                         She swallowed the cow to catch the dog,
@@ -77,7 +79,7 @@ public class StropheTest {
             , emptyValue = ""
     )
     public void shouldBuildVerseAfterThereWasInTheFirstStrophe(int verseNumber, String expectedVerse) {
-        String uniqueSentence = Strophe.buildVerseAfterThereWas(verseNumber, LIST_OF_ANIMALS);
+        String uniqueSentence = strophe.buildVerseAfterThereWas(verseNumber);
 
         assertEquals(expectedVerse,
                 uniqueSentence);
@@ -85,7 +87,7 @@ public class StropheTest {
 
     @Test
     public void shouldBuildFirstStrophe() {
-        String firstStrophe = Strophe.buildStrophe(1, LIST_OF_ANIMALS);
+        String firstStrophe = strophe.buildStrophe(1);
 
         assertEquals("""                
                         There was an old lady who swallowed a fly.
@@ -96,7 +98,7 @@ public class StropheTest {
 
     @Test
     public void shouldBuildSecondStrophe() {
-        String secondStrophe = Strophe.buildStrophe(2, LIST_OF_ANIMALS);
+        String secondStrophe = strophe.buildStrophe(2);
 
         assertEquals("""                
                         There was an old lady who swallowed a spider;

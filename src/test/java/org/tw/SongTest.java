@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.tw.Song.buildThereWasSentences;
 
 public class SongTest {
 
@@ -28,17 +27,20 @@ public class SongTest {
     public void shouldBeTheSameThanGoldenMaster() throws IOException {
         Song.printSong();
 
-        assertEquals(expectedSong(inMemoryStream), readContent(new File(GOLDEN_MASTER_PATH)));
+        assertEquals(buildActualSong(inMemoryStream), readContent(new File(GOLDEN_MASTER_PATH)));
     }
 
     @Test
     public void shouldAddDynamicallyThereWasAnOldLadyThatSwallowedAnAnimalSentence() throws IOException {
-        Song.printSong(buildThereWasSentences(LIST_OF_ANIMALS));
+        Strophe strophe = new Strophe(LIST_OF_ANIMALS);
+        Song.printSong(strophe);
 
-        assertEquals(expectedSong(inMemoryStream), readContent(new File(GOLDEN_MASTER_PATH)));
+        List<String> expectedSong = readContent(new File(GOLDEN_MASTER_PATH));
+        List<String> actualSong = buildActualSong(inMemoryStream);
+        assertEquals(actualSong, expectedSong);
     }
 
-    private static List<String> expectedSong(ByteArrayOutputStream inMemoryStream) throws IOException {
+    private static List<String> buildActualSong(ByteArrayOutputStream inMemoryStream) throws IOException {
         return readStream(new ByteArrayInputStream(inMemoryStream.toByteArray()));
     }
 

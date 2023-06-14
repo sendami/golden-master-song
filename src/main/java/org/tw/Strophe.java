@@ -48,6 +48,7 @@ public class Strophe {
         return this.buildThereWas(stropheNumber) +
                 this.buildVerseAfterThereWas(stropheNumber)+
                 this.buildSheShallow(stropheNumber)+
-                "I don't know why she swallowed a fly - perhaps she'll die!\n";
+                "I don't know why she swallowed a fly - perhaps she'll die!\n" +
+                "\n";
     }
 }

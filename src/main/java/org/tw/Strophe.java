@@ -5,19 +5,19 @@ public class Strophe {
         String sentence = String.format("There was an old lady who swallowed a %s", listOfAnimals[verseNumber - 1]);
         return verseNumber > 1 ?
                 (verseNumber == listOfAnimals.length ?
-                        sentence + "..." :
-                        sentence + ";") :
-                sentence + ".";
+                        sentence + "...\n" :
+                        sentence + ";\n") :
+                sentence + ".\n";
     }
 
-    public static String buildSheShallow(int verseNumber, String[] listOfAnimals) {
+    public static String buildSheShallow(int stropheNumber, String[] listOfAnimals) {
         StringBuilder sheShallow = new StringBuilder();
-        for (int i = verseNumber; i > 0; i--) {
+        for (int i = stropheNumber - 1; i > 0; i--) {
             sheShallow.append(String.format("She swallowed the %s to catch the %s",
                     listOfAnimals[i],
                     listOfAnimals[i - 1]));
             if (i == 1) {
-                sheShallow.append(";");
+                sheShallow.append(";\n");
             } else {
                 sheShallow.append(",\n");
             }
@@ -29,17 +29,19 @@ public class Strophe {
     public static String buildVerseAfterThereWas(int verseNumber, String[] listOfAnimals) {
         return switch (verseNumber) {
             default -> "";
-            case 2 -> "That wriggled and wiggled and tickled inside her.";
-            case 3 -> String.format("How absurd to swallow a %s.", listOfAnimals[verseNumber - 1]);
-            case 4 -> String.format("Fancy that to swallow a %s!", listOfAnimals[verseNumber - 1]);
-            case 5 -> String.format("What a hog, to swallow a %s!", listOfAnimals[verseNumber - 1]);
-            case 6 -> String.format("I don't know how she swallowed a %s!", listOfAnimals[verseNumber - 1]);
+            case 2 -> "That wriggled and wiggled and tickled inside her.\n";
+            case 3 -> String.format("How absurd to swallow a %s.\n", listOfAnimals[verseNumber - 1]);
+            case 4 -> String.format("Fancy that to swallow a %s!\n", listOfAnimals[verseNumber - 1]);
+            case 5 -> String.format("What a hog, to swallow a %s!\n", listOfAnimals[verseNumber - 1]);
+            case 6 -> String.format("I don't know how she swallowed a %s!\n", listOfAnimals[verseNumber - 1]);
             case 7 -> "...She's dead, of course!";
         };
     }
 
     public static String buildStrophe(int stropheNumber, String[] listOfAnimals) {
         return buildThereWas(stropheNumber, listOfAnimals) +
-                "\nI don't know why she swallowed a fly - perhaps she'll die!\n";
+                buildVerseAfterThereWas(stropheNumber, listOfAnimals)+
+                buildSheShallow(stropheNumber, listOfAnimals)+
+                "I don't know why she swallowed a fly - perhaps she'll die!\n";
     }
 }

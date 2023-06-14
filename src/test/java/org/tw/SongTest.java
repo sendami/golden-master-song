@@ -2,6 +2,8 @@ package org.tw;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -38,27 +40,16 @@ public class SongTest {
         assertEquals(expectedSong(inMemoryStream), readContent(new File(GOLDEN_MASTER_PATH)));
     }
 
-    @Test
-    public void shouldBuildThereWasDynamicallyInTheFirstVerse() {
-        String thereWasSentence = Song.buildThereWas(1, LIST_OF_ANIMALS);
+    @ParameterizedTest
+    @CsvSource(textBlock= """
+            1, There was an old lady who swallowed a fly.
+            2, There was an old lady who swallowed a spider;
+            7, There was an old lady who swallowed a horse...
+            """)
+    public void shouldBuildThereWasDynamicallyInTheFirstVerse(int verseNumber, String expectedVerse) {
+        String thereWasSentence = Song.buildThereWas(verseNumber, LIST_OF_ANIMALS);
 
-        assertEquals("There was an old lady who swallowed a fly.",
-                thereWasSentence);
-    }
-
-    @Test
-    public void shouldBuildThereWasDynamicallyInTheSecondVerse() {
-        String thereWasSentence = Song.buildThereWas(2, LIST_OF_ANIMALS);
-
-        assertEquals("There was an old lady who swallowed a spider;",
-                thereWasSentence);
-    }
-
-    @Test
-    public void shouldBuildThereWasDynamicallyInTheSeventhVerse() {
-        String thereWasSentence = Song.buildThereWas(7, LIST_OF_ANIMALS);
-
-        assertEquals("There was an old lady who swallowed a horse...",
+        assertEquals(expectedVerse,
                 thereWasSentence);
     }
 
@@ -93,35 +84,20 @@ public class SongTest {
                 sheShallowSentence);
     }
 
-    @Test
-    public void shouldBuildVerseAfterThereWasInTheFirstStrophe() {
-        String uniqueSentence = Song.buildVerseAfterThereWas(1, LIST_OF_ANIMALS);
+    @ParameterizedTest
+    @CsvSource(value = {
+            "1; ''",
+            "2; That wriggled and wiggled and tickled inside her.",
+            "3; How absurd to swallow a bird.",
+            "4; Fancy that to swallow a cat!",
+            "5; What a hog, to swallow a dog!",
+            "6; I don't know how she swallowed a cow!",
+            "7; ...She's dead, of course!"
+    }, delimiter = ';')
+    public void shouldBuildVerseAfterThereWasInTheFirstStrophe(int verseNumber, String expectedVerse) {
+        String uniqueSentence = Song.buildVerseAfterThereWas(verseNumber, LIST_OF_ANIMALS);
 
-        assertEquals("",
-                uniqueSentence);
-    }
-
-    @Test
-    public void shouldBuildVerseAfterThereWasInTheSecondStrophe() {
-        String uniqueSentence = Song.buildVerseAfterThereWas(2, LIST_OF_ANIMALS);
-
-        assertEquals("That wriggled and wiggled and tickled inside her.",
-                uniqueSentence);
-    }
-
-    @Test
-    public void shouldBuildVerseAfterThereWasInTheThirdStrophe() {
-        String uniqueSentence = Song.buildVerseAfterThereWas(3, LIST_OF_ANIMALS);
-
-        assertEquals("How absurd to swallow a bird.",
-                uniqueSentence);
-    }
-
-    @Test
-    public void shouldBuildVerseAfterThereWasInTheForthStrophe() {
-        String uniqueSentence = Song.buildVerseAfterThereWas(4, LIST_OF_ANIMALS);
-
-        assertEquals("Fancy that to swallow a cat!",
+        assertEquals(expectedVerse,
                 uniqueSentence);
     }
 

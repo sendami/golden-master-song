@@ -145,6 +145,9 @@ public class Song {
             case 2 -> "That wriggled and wiggled and tickled inside her.";
             case 3 -> String.format("How absurd to swallow a %s.", listOfAnimals[verseNumber - 1]);
             case 4 -> String.format("Fancy that to swallow a %s!", listOfAnimals[verseNumber - 1]);
+            case 5 -> String.format("What a hog, to swallow a %s!", listOfAnimals[verseNumber - 1]);
+            case 6 -> String.format("I don't know how she swallowed a %s!", listOfAnimals[verseNumber - 1]);
+            case 7 -> "...She's dead, of course!";
         };
     }
 }

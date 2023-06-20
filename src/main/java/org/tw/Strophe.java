@@ -3,9 +3,11 @@ package org.tw;
 public class Strophe {
 
     private final String[] listOfAnimals;
+    public int numberOfAnimals;
 
     Strophe(String[] listOfAnimals) {
         this.listOfAnimals = listOfAnimals;
+        this.numberOfAnimals = listOfAnimals.length;
     }
 
     public String buildThereWas(int stropheNumber) {

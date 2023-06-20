@@ -54,14 +54,10 @@ public class Song {
     }
 
     public static void printSong(Strophe strophe) {
-        String song =
-                strophe.buildStrophe(1) +
-                strophe.buildStrophe(2) +
-                strophe.buildStrophe(3) +
-                strophe.buildStrophe(4) +
-                strophe.buildStrophe(5) +
-                strophe.buildStrophe(6) +
-                strophe.buildStrophe(7);
+        StringBuilder song = new StringBuilder();
+        for(int i = 1; i <= strophe.numberOfAnimals; i++) {
+            song.append(strophe.buildStrophe(i));
+        }
 
         System.out.println(song);
     }

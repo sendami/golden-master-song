@@ -7,6 +7,7 @@ public class Strophe {
     Strophe(String[] listOfAnimals) {
         this.listOfAnimals = listOfAnimals;
     }
+
     public String buildThereWas(int stropheNumber) {
         String sentence = String.format("There was an old lady who swallowed a %s", listOfAnimals[stropheNumber - 1]);
         return stropheNumber > 1 ?
@@ -45,19 +46,19 @@ public class Strophe {
     }
 
     public String buildStrophe(int stropheNumber) {
-        String commonFirstAndLastStrophe = this.buildThereWas(stropheNumber) +
-                this.buildVerseAfterThereWas(stropheNumber);
-        if (stropheNumber == listOfAnimals.length || listOfAnimals.length == 1) {
-            return commonFirstAndLastStrophe;
-        } else {
-            return commonFirstAndLastStrophe +
-                    this.buildSheShallow(stropheNumber) +
-                    "I don't know why she swallowed a fly - perhaps she'll die!\n" +
-                    "\n";
+        if (stropheNumber > listOfAnimals.length) {
+            return "";
         }
+        return this.buildThereWas(stropheNumber) +
+                this.buildVerseAfterThereWas(stropheNumber) +
+                (stropheNumber < listOfAnimals.length ? this.buildSheShallow(stropheNumber) : "") +
+                ((stropheNumber < listOfAnimals.length || stropheNumber == 1) ? this.buildIDontKnow() : "");
     }
 
-    public int getNumberOfStrophes() {
-        return this.listOfAnimals.length;
+    public String buildIDontKnow() {
+        String iDontKnowSentence = String.format("I don't know why she swallowed a %s - perhaps she'll die!\n",
+                listOfAnimals[0]);
+
+        return  listOfAnimals.length > 1 ? iDontKnowSentence + "\n" : iDontKnowSentence;
     }
 }

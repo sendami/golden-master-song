@@ -2,47 +2,63 @@ package org.tw;
 
 public class Main {
     public static void main(String[] args) {
-        String song = "There was an old lady who swallowed a fly.\n" +
-                "I don't know why she swallowed a fly - perhaps she'll die!\n" +
+        writeTheSong();
+    }
+
+    public static void writeTheSong() {
+        String song = thereWasAnOldLadyWhoSwallowed("fly", ".") +
+                dontKnowWhySheSwallowed("fly") +
                 "\n" +
-                "There was an old lady who swallowed a spider;\n" +
+                thereWasAnOldLadyWhoSwallowed("spider", ";") +
                 "That wriggled and wiggled and tickled inside her.\n" +
-                "She swallowed the spider to catch the fly;\n" +
-                "I don't know why she swallowed a fly - perhaps she'll die!\n" +
+                sheSwallowedToCatch("spider", "fly", ";") +
+                dontKnowWhySheSwallowed("fly") +
                 "\n" +
-                "There was an old lady who swallowed a bird;\n" +
+                thereWasAnOldLadyWhoSwallowed("bird", ";") +
                 "How absurd to swallow a bird.\n" +
-                "She swallowed the bird to catch the spider,\n" +
-                "She swallowed the spider to catch the fly;\n" +
-                "I don't know why she swallowed a fly - perhaps she'll die!\n" +
+                sheSwallowedToCatch("bird", "spider", ",") +
+                sheSwallowedToCatch("spider", "fly", ";") +
+                dontKnowWhySheSwallowed("fly") +
                 "\n" +
-                "There was an old lady who swallowed a cat;\n" +
+                thereWasAnOldLadyWhoSwallowed("cat", ";") +
                 "Fancy that to swallow a cat!\n" +
-                "She swallowed the cat to catch the bird,\n" +
-                "She swallowed the bird to catch the spider,\n" +
-                "She swallowed the spider to catch the fly;\n" +
-                "I don't know why she swallowed a fly - perhaps she'll die!\n" +
+                sheSwallowedToCatch("cat", "bird", ",") +
+                sheSwallowedToCatch("bird", "spider", ",") +
+                sheSwallowedToCatch("spider", "fly", ";") +
+                dontKnowWhySheSwallowed("fly") +
                 "\n" +
-                "There was an old lady who swallowed a dog;\n" +
+                thereWasAnOldLadyWhoSwallowed("dog", ";") +
                 "What a hog, to swallow a dog!\n" +
-                "She swallowed the dog to catch the cat,\n" +
-                "She swallowed the cat to catch the bird,\n" +
-                "She swallowed the bird to catch the spider,\n" +
-                "She swallowed the spider to catch the fly;\n" +
-                "I don't know why she swallowed a fly - perhaps she'll die!\n" +
+                sheSwallowedToCatch("dog", "cat", ",") +
+                sheSwallowedToCatch("cat", "bird", ",") +
+                sheSwallowedToCatch("bird", "spider", ",") +
+                sheSwallowedToCatch("spider", "fly", ";") +
+                dontKnowWhySheSwallowed("fly") +
                 "\n" +
-                "There was an old lady who swallowed a cow;\n" +
+                thereWasAnOldLadyWhoSwallowed("cow", ";") +
                 "I don't know how she swallowed a cow!\n" +
-                "She swallowed the cow to catch the dog,\n" +
-                "She swallowed the dog to catch the cat,\n" +
-                "She swallowed the cat to catch the bird,\n" +
-                "She swallowed the bird to catch the spider,\n" +
-                "She swallowed the spider to catch the fly;\n" +
-                "I don't know why she swallowed a fly - perhaps she'll die!\n" +
+                sheSwallowedToCatch("cow", "dog", ",") +
+                sheSwallowedToCatch("dog", "cat", ",") +
+                sheSwallowedToCatch("cat", "bird", ",") +
+                sheSwallowedToCatch("bird", "spider", ",") +
+                sheSwallowedToCatch("spider", "fly", ";") +
+                dontKnowWhySheSwallowed("fly") +
                 "\n" +
-                "There was an old lady who swallowed a horse...\n" +
+                thereWasAnOldLadyWhoSwallowed("horse", "...") +
                 "...She's dead, of course!";
 
         System.out.println(song);
+    }
+
+    private static String sheSwallowedToCatch(String predator, String meal, String punctuation) {
+        return "She swallowed the " + predator + " to catch the " + meal + punctuation + "\n";
+    }
+
+    private static String dontKnowWhySheSwallowed(String animal) {
+        return "I don't know why she swallowed a " + animal + " - perhaps she'll die!\n";
+    }
+
+    private static String thereWasAnOldLadyWhoSwallowed(String animal, String punctuation) {
+        return "There was an old lady who swallowed a " + animal + punctuation + "\n";
     }
 }

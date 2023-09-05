@@ -1,5 +1,8 @@
 package org.tw;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Main {
     public static final String LINE_BREAK = "\n";
     public static final String EXCLAMATION_LINE_BREAK = "!\n";
@@ -18,58 +21,45 @@ public class Main {
     }
 
     public static void printSong() {
-        String song = oldLadyEatsAnimal("fly", DOT_LINE_BREAK) +
+        List<String> listOfAnimal = Arrays.asList("fly", "spider", "bird", "cat", "dog", "cow", "horse");
+
+
+        String song = oldLadyEatsAnimal(listOfAnimal.get(0), DOT_LINE_BREAK) +
                 I_DON_T_KNOW_WHY_SHE_SWALLOWED_A_FLY_PERHAPS_SHE_LL_DIE +
-                oldLadyEatsAnimal("spider", SEMICOLON_LINE_BREAK) +
+                oldLadyEatsAnimal(listOfAnimal.get(1), SEMICOLON_LINE_BREAK) +
                 "That wriggled and wiggled and tickled inside her" + DOT_LINE_BREAK +
-                spiderEatsFly() +
+                predatorEatsPrey(listOfAnimal.get(1), listOfAnimal.get(0), SEMICOLON_LINE_BREAK) +
                 I_DON_T_KNOW_WHY_SHE_SWALLOWED_A_FLY_PERHAPS_SHE_LL_DIE +
-                oldLadyEatsAnimal("bird", SEMICOLON_LINE_BREAK) +
-                HOW_ABSURD_TO_SWALLOW_A + "bird" + DOT_LINE_BREAK +
-                birdEatsSpider() +
-                spiderEatsFly() +
+                oldLadyEatsAnimal(listOfAnimal.get(2), SEMICOLON_LINE_BREAK) +
+                HOW_ABSURD_TO_SWALLOW_A + listOfAnimal.get(2) + DOT_LINE_BREAK +
+                predatorEatsPrey(listOfAnimal.get(2), listOfAnimal.get(1), COLON_LINE_BREAK) +
+                predatorEatsPrey(listOfAnimal.get(1), listOfAnimal.get(0), SEMICOLON_LINE_BREAK) +
                 I_DON_T_KNOW_WHY_SHE_SWALLOWED_A_FLY_PERHAPS_SHE_LL_DIE +
-                oldLadyEatsAnimal("cat", SEMICOLON_LINE_BREAK) +
-                FANCY_THAT_TO_SWALLOW_A + "cat" + EXCLAMATION_LINE_BREAK +
-                catEatsBird() +
-                birdEatsSpider() +
-                spiderEatsFly() +
+                oldLadyEatsAnimal(listOfAnimal.get(3), SEMICOLON_LINE_BREAK) +
+                FANCY_THAT_TO_SWALLOW_A + listOfAnimal.get(3) + EXCLAMATION_LINE_BREAK +
+                predatorEatsPrey(listOfAnimal.get(3), listOfAnimal.get(2), COLON_LINE_BREAK) +
+                predatorEatsPrey(listOfAnimal.get(2), listOfAnimal.get(1), COLON_LINE_BREAK) +
+                predatorEatsPrey(listOfAnimal.get(1), listOfAnimal.get(0), SEMICOLON_LINE_BREAK) +
                 I_DON_T_KNOW_WHY_SHE_SWALLOWED_A_FLY_PERHAPS_SHE_LL_DIE +
-                oldLadyEatsAnimal("dog", SEMICOLON_LINE_BREAK) +
-                WHAT_A_HOG_TO_SWALLOW_A + "dog" + EXCLAMATION_LINE_BREAK +
-                dogEatsCat() +
-                catEatsBird() +
-                birdEatsSpider() +
-                spiderEatsFly() +
+                oldLadyEatsAnimal(listOfAnimal.get(4), SEMICOLON_LINE_BREAK) +
+                WHAT_A_HOG_TO_SWALLOW_A + listOfAnimal.get(4) + EXCLAMATION_LINE_BREAK +
+                predatorEatsPrey(listOfAnimal.get(4), listOfAnimal.get(3), COLON_LINE_BREAK) +
+                predatorEatsPrey(listOfAnimal.get(3), listOfAnimal.get(2), COLON_LINE_BREAK) +
+                predatorEatsPrey(listOfAnimal.get(2), listOfAnimal.get(1), COLON_LINE_BREAK) +
+                predatorEatsPrey(listOfAnimal.get(1), listOfAnimal.get(0), SEMICOLON_LINE_BREAK) +
                 I_DON_T_KNOW_WHY_SHE_SWALLOWED_A_FLY_PERHAPS_SHE_LL_DIE +
-                oldLadyEatsAnimal("cow", SEMICOLON_LINE_BREAK) +
-                I_DON_T_KNOW_HOW_SHE_SWALLOWED_A + "cow" + EXCLAMATION_LINE_BREAK +
-                predatorEatsPrey("cow", "dog", COLON_LINE_BREAK) +
-                dogEatsCat() +
-                catEatsBird() +
-                birdEatsSpider() +
-                spiderEatsFly() +
+                oldLadyEatsAnimal(listOfAnimal.get(5), SEMICOLON_LINE_BREAK) +
+                I_DON_T_KNOW_HOW_SHE_SWALLOWED_A + listOfAnimal.get(5) + EXCLAMATION_LINE_BREAK +
+                predatorEatsPrey(listOfAnimal.get(5), listOfAnimal.get(4), COLON_LINE_BREAK) +
+                predatorEatsPrey(listOfAnimal.get(4), listOfAnimal.get(3), COLON_LINE_BREAK) +
+                predatorEatsPrey(listOfAnimal.get(3), listOfAnimal.get(2), COLON_LINE_BREAK) +
+                predatorEatsPrey(listOfAnimal.get(2), listOfAnimal.get(1), COLON_LINE_BREAK) +
+                predatorEatsPrey(listOfAnimal.get(1), listOfAnimal.get(0), SEMICOLON_LINE_BREAK) +
                 I_DON_T_KNOW_WHY_SHE_SWALLOWED_A_FLY_PERHAPS_SHE_LL_DIE +
-                oldLadyEatsAnimal("horse" + TWO_DOTS, DOT_LINE_BREAK) +
+                oldLadyEatsAnimal(listOfAnimal.get(6) + TWO_DOTS, DOT_LINE_BREAK) +
                 TWO_DOTS + ".She's dead, of course!";
 
         System.out.println(song);
-    }
-
-    private static String dogEatsCat() {
-        return predatorEatsPrey("dog", "cat", COLON_LINE_BREAK);
-    }
-
-    private static String catEatsBird() {
-        return predatorEatsPrey("cat", "bird", COLON_LINE_BREAK);
-    }
-
-    private static String spiderEatsFly() {
-        return predatorEatsPrey("spider", "fly", SEMICOLON_LINE_BREAK);
-    }
-
-    private static String birdEatsSpider() {
-        return predatorEatsPrey("bird", "spider", COLON_LINE_BREAK);
     }
 
     public static String predatorEatsPrey(String predator, String prey, String endOfLine) {

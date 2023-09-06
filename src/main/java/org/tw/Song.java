@@ -40,9 +40,10 @@ public class Song {
 
         String fragment = listOfAnimal.size() > 1 ?
                 oldLadyEatsAnimal(listOfAnimal.get(1), Song.SEMICOLON_LINE_BREAK) +
-                "That wriggled and wiggled and tickled inside her" + Song.DOT_LINE_BREAK +
-                predatorEatsPrey(listOfAnimal.get(1), listOfAnimal.get(0), Song.SEMICOLON_LINE_BREAK) +
-                Song.iDontKnowWhySheSwalledPerhapsShellDie(listOfAnimal.get(0)) :
+                        "That wriggled and wiggled and tickled inside her" + Song.DOT_LINE_BREAK +
+                        predatorEatsPrey(listOfAnimal.get(1), listOfAnimal.get(0), Song.SEMICOLON_LINE_BREAK) +
+                        iDontKnowWhySheSwalledPerhapsShellDie(listOfAnimal.get(0)) +
+                        oldLadyEatsAnimal(listOfAnimal.get(1) + Song.TWO_DOTS, Song.DOT_LINE_BREAK) :
                 "";
 
         return firstFragment + fragment + SHE_S_DEAD_OF_COURSE;

@@ -34,6 +34,7 @@ public class SongTest {
                 "She swallowed the SecondAnimal to catch the firstAnimal;\n" +
                 "I don't know why she swallowed a firstAnimal - perhaps she'll die!\n" +
                 "\n" +
+                "There was an old lady who swallowed a SecondAnimal...\n" +
                 "...She's dead, of course!";
 
         assertEquals(expectedSong, songBuilder.song());

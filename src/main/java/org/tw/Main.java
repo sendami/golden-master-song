@@ -16,15 +16,18 @@ public class Main {
 
         String song = Song.oldLadyEatsAnimal(listOfAnimal.get(0), Song.DOT_LINE_BREAK) +
                 songBuilder.iDontKnowWhySheSwallowedPerhapsShellDie(listOfAnimal.get(0)) +
+
                 Song.oldLadyEatsAnimal(listOfAnimal.get(1), Song.SEMICOLON_LINE_BREAK) +
                 "That wriggled and wiggled and tickled inside her" + Song.DOT_LINE_BREAK +
                 Song.predatorEatsPrey(listOfAnimal.get(1), listOfAnimal.get(0), Song.SEMICOLON_LINE_BREAK) +
                 songBuilder.iDontKnowWhySheSwallowedPerhapsShellDie(listOfAnimal.get(0)) +
+
                 Song.oldLadyEatsAnimal(listOfAnimal.get(2), Song.SEMICOLON_LINE_BREAK) +
                 Song.HOW_ABSURD_TO_SWALLOW_A + listOfAnimal.get(2) + Song.DOT_LINE_BREAK +
                 Song.predatorEatsPrey(listOfAnimal.get(2), listOfAnimal.get(1), Song.COLON_LINE_BREAK) +
                 Song.predatorEatsPrey(listOfAnimal.get(1), listOfAnimal.get(0), Song.SEMICOLON_LINE_BREAK) +
                 songBuilder.iDontKnowWhySheSwallowedPerhapsShellDie(listOfAnimal.get(0)) +
+
                 Song.oldLadyEatsAnimal(listOfAnimal.get(3), Song.SEMICOLON_LINE_BREAK) +
                 Song.FANCY_THAT_TO_SWALLOW_A + listOfAnimal.get(3) + Song.EXCLAMATION_LINE_BREAK +
                 Song.predatorEatsPrey(listOfAnimal.get(3), listOfAnimal.get(2), Song.COLON_LINE_BREAK) +

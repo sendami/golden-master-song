@@ -14,9 +14,7 @@ public class SongTest {
         Song songBuilder = new Song(listOfAnimal);
 
         String expectedSong = "There was an old lady who swallowed a OneAnimal.\n" +
-                "I don't know why she swallowed a OneAnimal - perhaps she'll die!\n" +
-                "\n" +
-                "...She's dead, of course!";
+                "I don't know why she swallowed a OneAnimal - perhaps she'll die!\n";
 
         assertEquals(expectedSong, songBuilder.song());
     }
@@ -32,10 +30,7 @@ public class SongTest {
                 "There was an old lady who swallowed a SecondAnimal;\n" +
                 "That wriggled and wiggled and tickled inside her.\n" +
                 "She swallowed the SecondAnimal to catch the firstAnimal;\n" +
-                "I don't know why she swallowed a firstAnimal - perhaps she'll die!\n" +
-                "\n" +
-                "There was an old lady who swallowed a SecondAnimal...\n" +
-                "...She's dead, of course!";
+                "I don't know why she swallowed a firstAnimal - perhaps she'll die!\n";
 
         assertEquals(expectedSong, songBuilder.song());
     }

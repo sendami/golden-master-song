@@ -37,54 +37,65 @@ public class Song {
         if (verseNumber == 0) {
             return oldLadyEatsAnimal(listOfAnimal.get(verseNumber), ".\n");
         }
-        ;
-        if (verseNumber >= 1 || verseNumber <= listOfAnimal.size() - 2) {
+        if (verseIsPartOfMiddleStrophe(verseNumber)) {
             return oldLadyEatsAnimal(listOfAnimal.get(verseNumber), SEMICOLON_LINE_BREAK);
-        }
-        if (verseNumber == listOfAnimal.size() - 1) {
+        } else {
             return oldLadyEatsAnimal(listOfAnimal.get(verseNumber), "...\n");
         }
-        return "";
+    }
+
+    private boolean verseIsPartOfMiddleStrophe(int stropheNumber) {
+        if (couldBeLastAnimal()) {
+            return stropheNumber >= 1 && !lastStrophe(stropheNumber);
+        } else {
+            return stropheNumber >= 1;
+        }
+    }
+
+    private boolean lastStrophe(int stropheNumber) {
+        return stropheNumber == listOfAnimal.size() - 1;
+    }
+
+    private boolean couldBeLastAnimal() {
+        return listOfAnimal.size() > 5;
     }
 
     public String iDontKnowWhySheSwallowedPerhapsShellDie(String animal) {
          return "I don't know why she swallowed a " + animal + " - perhaps she'll die!\n";
     }
 
-    public StringBuilder buildPredatorsEatPrey(int verseNumber) {
+    private StringBuilder buildPredatorsEatPrey(int stropheNumber) {
         StringBuilder result = new StringBuilder();
 
-        if (verseNumber == 0) {
-            return result;
+        if (verseIsPartOfMiddleStrophe(stropheNumber)) {
+            for (int i = stropheNumber; i > 0; i--) {
+                result.append(predatorEatsPrey(
+                        listOfAnimal.get(i),
+                        listOfAnimal.get(i - 1),
+                        (i - 1 == 0 ? SEMICOLON_LINE_BREAK : COLON_LINE_BREAK)));
+            }
         }
-
-        for (int i = verseNumber; i > 0; i--) {
-            result.append(predatorEatsPrey(
-                    listOfAnimal.get(i),
-                    listOfAnimal.get(i-1),
-                    (i - 1 == 0 ? SEMICOLON_LINE_BREAK : COLON_LINE_BREAK)));
-        }
-
         return result;
     }
 
-    public String buildStrophe(int verseNumber) {
-        return oldLadyEatsAnimal(verseNumber) +
+    private String buildLastVerse(int stropheNumber) {
+        return lastStrophe(stropheNumber) && couldBeLastAnimal() ?
+                "...She's dead, of course!" :
+                iDontKnowWhySheSwallowedPerhapsShellDie(listOfAnimal.get(0));
+    }
 
-                specialVerse(verseNumber) +
-
-                buildPredatorsEatPrey(verseNumber) +
-
-                (verseNumber <= listOfAnimal.size() - 1 ?
-                        iDontKnowWhySheSwallowedPerhapsShellDie(listOfAnimal.get(0)) :
-                        "");
+    public String buildStrophe(int stropheNumber) {
+        return oldLadyEatsAnimal(stropheNumber) +
+                specialVerse(stropheNumber) +
+                buildPredatorsEatPrey(stropheNumber) +
+                buildLastVerse(stropheNumber);
     }
 
     public String song() {
         StringBuilder allFragments = new StringBuilder();
-        for (int verseNumber = 0; verseNumber < listOfAnimal.size(); verseNumber++) {
-            allFragments.append(buildStrophe(verseNumber))
-                    .append((verseNumber == listOfAnimal.size() - 1) ? "" : LINE_BREAK);
+        for (int stropheNumber = 0; stropheNumber < listOfAnimal.size(); stropheNumber++) {
+            allFragments.append(buildStrophe(stropheNumber))
+                    .append(lastStrophe(stropheNumber) ? "" : LINE_BREAK);
         }
 
         return String.valueOf(allFragments);

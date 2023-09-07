@@ -1,6 +1,6 @@
 package org.tw;
 
-public class Main {
+public class SongGoldenMaster {
     public static void main(String[] args) {
         writeTheSong();
     }

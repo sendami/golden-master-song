@@ -3,8 +3,8 @@ package org.tw;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -19,8 +19,7 @@ public class MainTest {
 
         Main.printSong();
 
-        File goldenMasterFile = new File("./goldenMaster.txt");
-        assertEquals(readStream(new ByteArrayInputStream(inMemoryStream.toByteArray())), readContent(goldenMasterFile));
+        assertEquals(Files.readString(Path.of("./goldenMaster.txt")), inMemoryStream.toString());
     }
 
     public static void main(String [] args) throws FileNotFoundException {
@@ -30,19 +29,5 @@ public class MainTest {
         Main.printSong();
 
         goldenMasterFile.close();
-    }
-
-    private static List<String> readContent(File file) throws IOException {
-        FileInputStream fileInputStream = new FileInputStream(file);
-        return readStream(fileInputStream);
-    }
-
-    private static List<String> readStream(InputStream byteArrayInputStream) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(byteArrayInputStream));
-        List<String> result= new ArrayList<>();
-        while(reader.ready()) {
-            result.add(reader.readLine());
-        }
-        return result;
     }
 };

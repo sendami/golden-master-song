@@ -10,51 +10,49 @@ public class SongTest {
 
     @Test
     public void shouldGenerateASongWithOneAnimal() {
-        List<String> listOfAnimal = List.of("oneAnimal");
+        List<String> listOfAnimal = List.of("fly");
         Song songBuilder = new Song(listOfAnimal);
 
-        String expectedSong = "There was an old lady who swallowed a oneAnimal.\n" +
-                "I don't know why she swallowed a oneAnimal - perhaps she'll die!\n";
+        String expectedSong = "There was an old lady who swallowed a fly.\n" +
+                "I don't know why she swallowed a fly - perhaps she'll die!\n";
 
         assertEquals(expectedSong, songBuilder.song());
     }
 
     @Test
     public void shouldGenerateASongWithTwoAnimals() {
-        List<String> listOfAnimal = List.of("firstAnimal", "secondAnimal");
+        List<String> listOfAnimal = List.of("fly", "spider");
         Song songBuilder = new Song(listOfAnimal);
 
-        String expectedSong = "There was an old lady who swallowed a firstAnimal.\n" +
-                "I don't know why she swallowed a firstAnimal - perhaps she'll die!\n" +
+        String expectedSong = "There was an old lady who swallowed a fly.\n" +
+                "I don't know why she swallowed a fly - perhaps she'll die!\n" +
                 "\n" +
-                "There was an old lady who swallowed a secondAnimal;\n" +
+                "There was an old lady who swallowed a spider;\n" +
                 "That wriggled and wiggled and tickled inside her.\n" +
-                "She swallowed the secondAnimal to catch the firstAnimal;\n" +
-                "I don't know why she swallowed a firstAnimal - perhaps she'll die!\n";
+                "She swallowed the spider to catch the fly;\n" +
+                "I don't know why she swallowed a fly - perhaps she'll die!\n";
 
         assertEquals(expectedSong, songBuilder.song());
     }
 
     @Test
     public void shouldGenerateASongWithThreeAnimals() {
-        List<String> listOfAnimal = List.of("firstAnimal", "secondAnimal", "thirdAnimal");
+        List<String> listOfAnimal = List.of("fly", "spider", "bird");
         Song songBuilder = new Song(listOfAnimal);
 
-        String expectedSong = "There was an old lady who swallowed a firstAnimal.\n" +
-                "I don't know why she swallowed a firstAnimal - perhaps she'll die!\n" +
+        String expectedSong = "There was an old lady who swallowed a fly.\n" +
+                "I don't know why she swallowed a fly - perhaps she'll die!\n" +
                 "\n" +
-
-                "There was an old lady who swallowed a secondAnimal;\n" +
+                "There was an old lady who swallowed a spider;\n" +
                 "That wriggled and wiggled and tickled inside her.\n" +
-                "She swallowed the secondAnimal to catch the firstAnimal;\n" +
-                "I don't know why she swallowed a firstAnimal - perhaps she'll die!\n" +
+                "She swallowed the spider to catch the fly;\n" +
+                "I don't know why she swallowed a fly - perhaps she'll die!\n" +
                 "\n" +
-
-                "There was an old lady who swallowed a thirdAnimal;\n" +
-                "How absurd to swallow a thirdAnimal.\n" +
-                "She swallowed the thirdAnimal to catch the secondAnimal,\n" +
-                "She swallowed the secondAnimal to catch the firstAnimal;\n" +
-                "I don't know why she swallowed a firstAnimal - perhaps she'll die!\n";
+                "There was an old lady who swallowed a bird;\n" +
+                "How absurd to swallow a bird.\n" +
+                "She swallowed the bird to catch the spider,\n" +
+                "She swallowed the spider to catch the fly;\n" +
+                "I don't know why she swallowed a fly - perhaps she'll die!\n";
 
         assertEquals(expectedSong, songBuilder.song());
 

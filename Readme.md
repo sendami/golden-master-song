@@ -1,6 +1,6 @@
 # The “Situation”
 
-Code to produce a popular children’s nursery rhyme was produced by a web agency for the customer last year.
+We have a code which returns a popular children’s nursery rhyme that was produced by a web agency for the customer last year.
 
 >There was an old lady who swallowed a fly.
 >I don't know why she swallowed a fly - perhaps she'll die!
@@ -44,7 +44,7 @@ I don't know why she swallowed a fly - perhaps she'll die!
 ...She's dead, of course!
 
 ***Requirements***
-* The customer now desires to produce multiple different versions of the song using the same structure but based on different themes, for example a current popular children’s movie featuring a cast of animals.
+* The customer now desires to produce multiple different versions of the song using the same structure but based on different themes.
 * The customer asks that you make the song configurable for different lists of animals.
 * The customer cannot guarantee that there will be the same number of animals in each different version.
 
